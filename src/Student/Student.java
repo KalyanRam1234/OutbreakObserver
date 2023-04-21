@@ -3,12 +3,12 @@ package Student;
 public class Student {
     private String id,fname,lname, email_id;
     private String gender;
-    private String batch;
+    private String batch, date;
     private String branch, roomno;
 
     public Student(){}
 
-    public Student(String id, String fname, String lname, String email_id, String gender, String batch, String branch, String roomno){
+    public Student(String id, String fname, String lname, String date, String email_id, String gender, String batch, String branch, String roomno){
         this.id=id;
         this.fname=fname;
         this.lname=lname;

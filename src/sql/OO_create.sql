@@ -9,6 +9,7 @@ create table student(
     roomNo varchar(10),
     constraint pk_student PRIMARY KEY(StudentId)
 );
+
 create table vaccination(
     studentId varchar(10),
     dosesTaken int,
@@ -16,29 +17,31 @@ create table vaccination(
     certif varchar(100),
     constraint pk_vaccination PRIMARY KEY(studentId)
 );
+
 create table rtpcr(
     testId varchar(10),
     studentId varchar(10),
     testDate Date,
-    test_result varchar(8),
+    test_result TINYINT(1),
     certif varchar(100),
     constraint pk_rtpcr PRIMARY KEY(testId)
 );
+
 create table hostelRoom(
     roomNo varchar(10),
     roomType varchar(10),
     capacity int,
     vacancy int,
-    hostelType varchar(10),
     constraint pk_hostelRoom PRIMARY KEY(roomNo)
 );
+
 create table quarantine(
     caseId varchar(10),
     startDate Date,
-    duration varchar(15),
     healthStatus varchar(50),
     constraint pk_quarantine PRIMARY KEY(caseId)
 );
+
 create table posCase(
     caseId varchar(10),
     studentId varchar(10),
@@ -47,6 +50,7 @@ create table posCase(
     diagnosisDate Date,
     constraint pk_case PRIMARY KEY(caseId)
 );
+
 create table dose(
     studentId varchar(10),
     doseNo int,

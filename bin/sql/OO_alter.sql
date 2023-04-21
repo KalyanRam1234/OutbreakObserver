@@ -5,8 +5,8 @@ alter table vaccination
 alter table rtpcr
     add constraint fk_rtpcr_studentId FOREIGN KEY (studentId) REFERENCES student(studentId);
 alter table posCase
-    add constraint fk_case_studenId FOREIGN KEY (studentId) REFERENCES student(studentId) ;
+    add constraint fk_case_studenId FOREIGN KEY (studentId) REFERENCES student(studentId);
 alter table posCase
-    add constraint fk_case_qroomNo FOREIGN KEY (qroomNo) REFERENCES hostelRoom(roomNo) ;
+    add constraint fk_case_qroomNo FOREIGN KEY (qroomNo) REFERENCES hostelRoom(roomNo);
 alter table posCase
-    add constraint fk_case_testId FOREIGN KEY (testId) REFERENCES rtpcr(testId) ;
+    add constraint fk_case_testId FOREIGN KEY (testId) REFERENCES rtpcr(testId);
