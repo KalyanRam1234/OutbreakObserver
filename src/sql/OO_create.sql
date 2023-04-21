@@ -35,6 +35,7 @@ create table hostelRoom(
 create table quarantine(
     caseId varchar(10),
     startDate Date,
+    duration varchar(15),
     healthStatus varchar(50),
     constraint pk_quarantine PRIMARY KEY(caseId)
 );
