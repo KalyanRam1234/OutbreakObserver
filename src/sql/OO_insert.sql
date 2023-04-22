@@ -3,31 +3,31 @@
 
 
 -- MEN's HOSTEL ENTRIES
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B205","Quarantine", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B204","Quarantine", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B203","Quarantine", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B202","Quarantine", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("B201","Quarantine", 1, 0);
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B205","Quarantine", 1, 1, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B204","Quarantine", 1, 1, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B203","Quarantine", 1, 0, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B202","Quarantine", 1, 0, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B201","Quarantine", 1, 0, "Mens");
 
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B105","Hostel", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("B104","Hostel", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B103","Hostel", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B102","Hostel", 3, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy) VALUES("B101","Hostel", 3, 0);
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B105","Hostel", 1, 1, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B104","Hostel", 1, 0, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B103","Hostel", 1, 0, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B102","Hostel", 3, 1, "Mens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("B101","Hostel", 3, 0, "Mens");
 
 -- WOMEN'S HOSTEL ENTRIES
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L205","Quarantine", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L204","Quarantine", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L203","Quarantine", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L202","Quarantine", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L201","Quarantine", 1, 0);
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L205","Quarantine", 1, 1, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L204","Quarantine", 1, 1, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L203","Quarantine", 1, 1, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L202","Quarantine", 1, 0, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L201","Quarantine", 1, 0, "Womens");
 
 
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L105","Hostel", 1, 1);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L104","Hostel", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L103","Hostel", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L102","Hostel", 1, 0);
-INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy ) VALUES("L101","Hostel", 3, 1);
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L105","Hostel", 1, 1, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L104","Hostel", 1, 0, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L103","Hostel", 1, 0, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L102","Hostel", 1, 0, "Womens");
+INSERT INTO hostelRoom(roomNo, roomType, capacity, vacancy, hostelType ) VALUES("L101","Hostel", 3, 1, "Womens");
 
 
 INSERT INTO student(studentId, fname, lname, dateOfBirth, emailId, gender, branch, roomNo) VALUES("IMT2022001","Vishal", "Parthani", "2001-02-27", "Vishal.Parthani@iiitb.ac.in", "M", "CSE", "B101");
@@ -158,3 +158,31 @@ INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("c
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case003", "IMT2021001", "B202", "RT035", "2023-03-29");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case004", "IMT2021004", "L201", "RT053", "2023-04-12");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case005", "MT2022001", "L202", "RT060", "2023-04-12");
+
+
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("Sunset2Star!"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("Treehouse#32"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", MD5("OceanView$19"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", MD5("HappyDayz@77"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", MD5("PurpleSky$12"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", MD5("GoldenSun!28"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", MD5("SilverMoon#45"));
+INSERT INTO login_t(userid, userpass) VALUES("MT2021001", MD5("GreenGrass$36"));
+INSERT INTO login_t(userid, userpass) VALUES("MT2021002", MD5("RedRose@91"));
+INSERT INTO login_t(userid, userpass) VALUES("MT2022001", MD5("BlueSea!65"));
+INSERT INTO login_t(userid, userpass) VALUES("MT2022002", MD5("PinkFlower#73"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", MD5("YellowSun#98"));
+INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", MD5("IamAdmin@001"));
+
+
+
+
+
+
+
+
+
+
+
+
+

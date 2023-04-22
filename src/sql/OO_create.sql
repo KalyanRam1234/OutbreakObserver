@@ -32,6 +32,7 @@ create table hostelRoom(
     roomType varchar(10),
     capacity int,
     vacancy int,
+    hostelType varchar(10),
     constraint pk_hostelRoom PRIMARY KEY(roomNo)
 );
 
@@ -57,4 +58,10 @@ create table dose(
     dateTaken Date,
     vaccineName varchar(15),
     constraint pk_dose PRIMARY KEY(studentId,dateTaken,vaccineName)
+);
+
+create table login_t(
+    userid varchar(30),
+    userpass varchar(50),
+    constraint pk_userid PRIMARY KEY (userid)
 );
