@@ -147,11 +147,11 @@ INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT05
 INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT060","MT2022001","2023-04-12",1,NULL);
 
 
-INSERT INTO quarantine(caseId, startDate, healthStatus) VALUES("case001", "2023-02-22", NULL);
-INSERT INTO quarantine(caseId, startDate, healthStatus) VALUES("case002", "2023-03-29", NULL);
-INSERT INTO quarantine(caseId, startDate, healthStatus) VALUES("case003", "2023-03-29", NULL);
-INSERT INTO quarantine(caseId, startDate, healthStatus) VALUES("case004", "2023-04-12", NULL);
-INSERT INTO quarantine(caseId, startDate, healthStatus) VALUES("case005", "2023-04-12", NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case001", "2023-02-22", "2023-03-06",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case002", "2023-03-29", "2023-04-13",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case003", "2023-03-29", "2023-04-13",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case004", "2023-04-12", "2023-04-27",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case005", "2023-04-12", "2023-04-27",NULL);
 
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case001", "MT2021001", "B203", "RT015", "2023-02-22");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case002", "IMT2022001", "B201", "RT025", "2023-03-29");
