@@ -1,9 +1,12 @@
 package RTPCR;
 
+import java.util.ArrayList;
+
 public interface RTPCRDAO {
-    public RTPCR getRTPCRByStudentId(String id);
+    public ArrayList<RTPCR> getRTPCRByStudentId(String id);
     public RTPCR getRTPCRByStudentId_Date(String id, String testDate);
-    public RTPCR getRTPCR_postive();
+    public ArrayList<RTPCR> getRTPCR_postive();
+    public ArrayList<RTPCR> getRTPCR_negative();
     public RTPCR getRTPCRByStudentId_LastDate(String id);
-    // public Student getStudentsByBatch(String batch);
+    public void enterRTPCR(String testId, String studentId, String testDate,int testResult,String certif);
 }
