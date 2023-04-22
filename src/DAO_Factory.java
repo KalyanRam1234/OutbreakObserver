@@ -1,6 +1,6 @@
 import Student.*;
 import java.sql.*;
-
+import UseCases.UseCase1.*;
 public class DAO_Factory{
 
 	public enum TXN_STATUS { COMMIT, ROLLBACK };
@@ -8,12 +8,13 @@ public class DAO_Factory{
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/outbreakObserverDB?characterEncoding=latin1&useConfigs=maxPerformance";
 	static final String USER = "root";
-	static final String PASS = "password";
+	static final String PASS = "Kalyan#1234";
 	Connection dbconnection = null;
 
 	// You can add additional DAOs here as needed
 	StudentDAO studentDAO = null;
 
+	useCase1_DAO usecase1=null;
 	boolean activeConnection = false;
 
 	public DAO_Factory()
@@ -57,6 +58,16 @@ public class DAO_Factory{
 	}
 	
 
+	public useCase1_DAO getuseCase1DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase1 == null )
+			usecase1 = new useCase1_DAO_JDBC( dbconnection );
+
+		return usecase1;
+	}
 	
 	public void deactivateConnection( TXN_STATUS txn_status )
 	{
