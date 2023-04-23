@@ -44,7 +44,8 @@ public class useCase2_DAO_JDBC implements useCase2_DAO{
     
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId, s.fname, s.lname, r.testDate, r.testId, r.test_result, s.emailId from student s inner join rtcpr r where r.studentId = s.studentId and s.studentId = " + rollNo + "and r.testDate = " + Date;
+            sql="select s.studentId, s.fname, s.lname, r.testDate, r.testId, r.test_result, s.emailId from student s inner join rtpcr r where r.studentId = s.studentId and s.studentId = \"" + rollNo + "\" and r.testDate = \"" + Date + "\"";
+            System.out.println(sql);
             ResultSet rs= stmt.executeQuery(sql);
         		//Retrieve by column name
             while(rs.next()){
@@ -68,7 +69,7 @@ public class useCase2_DAO_JDBC implements useCase2_DAO{
     
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId, s.fname, s.lname, r.testDate, r.testId, r.test_result, s.emailId from student s inner join rtcpr r where r.studentId = s.studentId and s.studentId = " + rollNo;
+            sql="select s.studentId, s.fname, s.lname, r.testDate, r.testId, r.test_result, s.emailId from student s inner join rtpcr r where r.studentId = s.studentId and s.studentId = \"" + rollNo + "\"";
             ResultSet rs= stmt.executeQuery(sql);
         		//Retrieve by column name
             while(rs.next()){
@@ -96,7 +97,7 @@ public class useCase2_DAO_JDBC implements useCase2_DAO{
 			preparedStatement.setString(1, rtpcr.gettestId());
 			preparedStatement.setString(2, rtpcr.getstudentId());
             preparedStatement.setString(3, rtpcr.gettestDate());
-            preparedStatement.setString(4, rtpcr.gettest_Result());
+            preparedStatement.setInt(4, rtpcr.gettest_Result().equals("Postive")?1:0);
             preparedStatement.setString(5, rtpcr.getCertificate());
  
 			// execute insert SQL stetement

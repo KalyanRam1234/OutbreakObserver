@@ -160,20 +160,33 @@ INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("c
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case005", "MT2022001", "L202", "RT060", "2023-04-12");
 
 
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("Sunset2Star!"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("Treehouse#32"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", MD5("OceanView$19"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", MD5("HappyDayz@77"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", MD5("PurpleSky$12"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", MD5("GoldenSun!28"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", MD5("SilverMoon#45"));
-INSERT INTO login_t(userid, userpass) VALUES("MT2021001", MD5("GreenGrass$36"));
-INSERT INTO login_t(userid, userpass) VALUES("MT2021002", MD5("RedRose@91"));
-INSERT INTO login_t(userid, userpass) VALUES("MT2022001", MD5("BlueSea!65"));
-INSERT INTO login_t(userid, userpass) VALUES("MT2022002", MD5("PinkFlower#73"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", MD5("YellowSun#98"));
-INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", MD5("IamAdmin@001"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("Sunset2Star!"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("Treehouse#32"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", MD5("OceanView$19"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", MD5("HappyDayz@77"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", MD5("PurpleSky$12"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", MD5("GoldenSun!28"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", MD5("SilverMoon#45"));
+-- INSERT INTO login_t(userid, userpass) VALUES("MT2021001", MD5("GreenGrass$36"));
+-- INSERT INTO login_t(userid, userpass) VALUES("MT2021002", MD5("RedRose@91"));
+-- INSERT INTO login_t(userid, userpass) VALUES("MT2022001", MD5("BlueSea!65"));
+-- INSERT INTO login_t(userid, userpass) VALUES("MT2022002", MD5("PinkFlower#73"));
+-- INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", MD5("YellowSun#98"));
+-- INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", MD5("IamAdmin@001"));
 
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", null);
+INSERT INTO login_t(userid, userpass) VALUES("MT2021001", null);
+INSERT INTO login_t(userid, userpass) VALUES("MT2021002", null);
+INSERT INTO login_t(userid, userpass) VALUES("MT2022001", null);
+INSERT INTO login_t(userid, userpass) VALUES("MT2022002", null);
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", null);
+INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", null);
 
 
 
