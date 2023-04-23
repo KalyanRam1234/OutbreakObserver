@@ -262,7 +262,33 @@ public class HostelDAO_JDBC implements HostelDAO {
 		} catch (SQLException e) {
  			System.out.println(e.getMessage());
  		}
-        
+
+		try{
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+    }
+
+
+    @Override
+    public void deleteHostelRoom(String roomNo) {
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+		String sql;
+		sql = "delete from hostelRoom where roomNo=?";
+
+		try {
+			preparedStatement = dbConnection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, roomNo);
+			// execute update SQL stetement
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+
 		try{
 			if (preparedStatement != null) {
 				preparedStatement.close();
