@@ -212,4 +212,40 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
  			System.out.println(e.getMessage());
  		}
     }
+
+    @Override
+    public void deleteRTPCR(String testId, String studentId) {
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+		String sql;
+        
+        if(!testId.equals(null))
+		sql = "delete from rtpcr where testId=?";
+        else if(!studentId.equals(null))
+        sql = "delete from rtpcr where studentId=?";
+        else return;
+
+		try {
+			preparedStatement = dbConnection.prepareStatement(sql);
+		
+            if(!testId.equals(null))
+                preparedStatement.setString(1, testId);
+            else if(!studentId.equals(null))
+                preparedStatement.setString(1, studentId);
+			
+			// execute update SQL stetement
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+
+		try{
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+    }
+
+    
 }

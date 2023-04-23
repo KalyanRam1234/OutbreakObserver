@@ -9,4 +9,5 @@ public interface RTPCRDAO {
     public ArrayList<RTPCR> getRTPCR_negative();
     public RTPCR getRTPCRByStudentId_LastDate(String id);
     public void enterRTPCR(String testId, String studentId, String testDate,int testResult,String certif);
+    public void deleteRTPCR(String testId, String studentId);
 }
