@@ -131,4 +131,28 @@ public class QuarantiveDAO_JDBC implements QuarantineDAO {
  		}
     }
 
+    public void removeQuarantineCase(String caseId)
+    {
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+		String sql;
+		sql = "delete from quarantine where caseId=?";
+
+		try {
+			preparedStatement = dbConnection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, caseId);
+			// execute update SQL stetement
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+
+		try{
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+    }
 }
