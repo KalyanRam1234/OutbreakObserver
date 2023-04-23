@@ -155,4 +155,56 @@ public class QuarantiveDAO_JDBC implements QuarantineDAO {
  			System.out.println(e.getMessage());
  		}
     }
+
+    @Override
+    public void updateQuarantineHealthStatus(String caseId, String status) {
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+        String sql;
+        sql = "UPDATE vaccination SET healthStatus=? WHERE caseId=?";
+  
+        try {
+          preparedStatement = dbConnection.prepareStatement(sql);
+        
+          preparedStatement.setString(1, status);
+          preparedStatement.setString(2, caseId);
+          // execute update SQL stetement
+          preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+          System.out.println(e.getMessage());
+        }
+  
+        try{
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+        } catch (SQLException e) {
+          System.out.println(e.getMessage());
+        } 
+    }
+
+    @Override
+    public void updateQuarantineEndDate(String caseId, String endDate) {
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+        String sql;
+        sql = "UPDATE vaccination SET endDate=? WHERE caseId=?";
+  
+        try {
+          preparedStatement = dbConnection.prepareStatement(sql);
+        
+          preparedStatement.setString(1, endDate);
+          preparedStatement.setString(2, caseId);
+          // execute update SQL stetement
+          preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+          System.out.println(e.getMessage());
+        }
+  
+        try{
+          if (preparedStatement != null) {
+            preparedStatement.close();
+          }
+        } catch (SQLException e) {
+          System.out.println(e.getMessage());
+        } 
+    }
 }
