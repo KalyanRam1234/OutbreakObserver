@@ -1,30 +1,24 @@
 package UseCases.useCase3;
 
 public class useCase3{
-    private String studentId, roomNo;
-    private String vstatus, vdoses;
-    private String rtpcr_id, rtpcr_testDate, rtpcr_testResult;
-    private int infected=0;
+    private String studentId;
+    private int doseNo;
+    private String dateTaken, vaccineName, vaccinationStatus; 
+    
 
     public useCase3(){}
 
-    public useCase3(String studentId, String roomNo, String vstatus, String vdoses, String rtpcr_id, String rtpcr_testDate, String rtpcr_testResult, int infected){
+    public useCase3(String studentId, int doseNo,String dateTaken, String vaccineName, String vaccinationStatus){
         this.studentId=studentId;
-        this.roomNo=roomNo;
-        this.vstatus=vstatus;
-        this.vdoses=vdoses;
-        this.rtpcr_id=rtpcr_id;
-        this.rtpcr_testDate=rtpcr_testDate;
-        this.rtpcr_testResult=rtpcr_testResult;
-        this.infected=infected;
+        this.doseNo=doseNo;
+        this.dateTaken=dateTaken;
+        this.vaccineName=vaccineName;
+        this.vaccinationStatus=vaccinationStatus;
     }
 
     public String getStudentId() {return studentId;}
-    public String getRoomNo() {return roomNo;}
-    public String getvStatus() {return vstatus;}
-    public String getvDoses() {return vdoses;}
-    public String getRTPCRId() {return rtpcr_id;}
-    public String getRTPCRTestDate() {return rtpcr_testDate;}
-    public String getRTPCRTestResult() {return rtpcr_testResult;}
-    public int getInfected() {return infected;}
+    public String getDate() {return dateTaken;}
+    public String getvStatus() {return vaccinationStatus;}
+    public String getvName() {return vaccineName;}
+    public int getDoseNo() {return doseNo;}
 }
