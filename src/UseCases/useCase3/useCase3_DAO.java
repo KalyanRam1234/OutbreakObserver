@@ -3,6 +3,7 @@ package UseCases.useCase3;
 import java.util.ArrayList;
 
 public interface useCase3_DAO {
-    public ArrayList<useCase3> getRoommatesInfo(String studentId);
-    
+    public void enterIntoDosesTable(useCase3 uc3);
+    public void updateVaccinationStatus(useCase3 uc3);
+    public int getCurrentDoseNo(String studentId);
 }
