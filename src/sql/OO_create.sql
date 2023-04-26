@@ -46,9 +46,9 @@ create table quarantine(
 
 create table posCase(
     caseId varchar(10),
-    studentId varchar(10),
-    qroomNo varchar(10),
-    testId varchar(10),
+    studentId varchar(10) UNIQUE,
+    qroomNo varchar(10) UNIQUE,
+    testId varchar(10) UNIQUE,
     diagnosisDate Date,
     constraint pk_case PRIMARY KEY(caseId)
 );

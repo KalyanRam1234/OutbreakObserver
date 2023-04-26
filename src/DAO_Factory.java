@@ -4,6 +4,16 @@ import java.sql.*;
 import Login.*;
 import UseCases.UseCase1.*;
 import UseCases.useCase2.*;
+import UseCases.useCase3.useCase3_DAO;
+import UseCases.useCase3.useCase3_DAO_JDBC;
+import UseCases.useCase4.useCase4_DAO;
+import UseCases.useCase4.useCase4_DAO_JDBC;
+import UseCases.useCase5.useCase5_DAO;
+import UseCases.useCase5.useCase5_DAO_JDBC;
+import UseCases.useCase6.useCase6_DAO;
+import UseCases.useCase6.useCase6_DAO_JDBC;
+import UseCases.useCase7.useCase7_DAO;
+import UseCases.useCase7.useCase7_DAO_JDBC;
 
 public class DAO_Factory{
 
@@ -20,6 +30,11 @@ public class DAO_Factory{
 	LoginDAO loginDAO=null;
 	useCase1_DAO usecase1=null;
 	useCase2_DAO usecase2=null;
+	useCase3_DAO usecase3=null;
+	useCase4_DAO usecase4=null;
+	useCase5_DAO usecase5=null;
+	useCase6_DAO usecase6=null;
+	useCase7_DAO usecase7=null;
 	boolean activeConnection = false;
 
 	public DAO_Factory()
@@ -94,6 +109,60 @@ public class DAO_Factory{
 			usecase2 = new useCase2_DAO_JDBC( dbconnection );
 
 		return usecase2;
+	}
+	public useCase3_DAO getuseCase3DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase3 == null )
+			usecase3 = new useCase3_DAO_JDBC( dbconnection );
+
+		return usecase3;
+	}
+
+	public useCase4_DAO getuseCase4DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase4 == null )
+			usecase4 = new useCase4_DAO_JDBC( dbconnection );
+
+		return usecase4;
+	}
+
+	public useCase5_DAO getuseCase5DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase5 == null )
+			usecase5 = new useCase5_DAO_JDBC( dbconnection );
+
+		return usecase5;
+	}
+
+	public useCase6_DAO getuseCase6DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase6 == null )
+			usecase6 = new useCase6_DAO_JDBC( dbconnection );
+
+		return usecase6;
+	}
+
+	public useCase7_DAO getuseCase7DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase7 == null )
+			usecase7 = new useCase7_DAO_JDBC( dbconnection );
+
+		return usecase7;
 	}
 
 	public void deactivateConnection( TXN_STATUS txn_status )

@@ -1,5 +1,8 @@
 package UseCases.useCase3;
 
-public class useCase3_DAO {
+import java.util.ArrayList;
+
+public interface useCase3_DAO {
+    public ArrayList<useCase3> getRoommatesInfo(String studentId);
     
 }
