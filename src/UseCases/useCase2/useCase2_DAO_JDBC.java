@@ -22,11 +22,12 @@ public class useCase2_DAO_JDBC implements useCase2_DAO{
             String testId=rs.getString("r.testId");
             String date=rs.getString("r.testDate");
             int result=rs.getInt("r.test_result");
-            if(result==0)
             
-            s=new useCase2(rollno,fullName,date,testId,"Negative" ,email);
-
-            else s=new useCase2(rollno,fullName,date,testId,"Positive" ,email);
+            if(result==0)        
+                s=new useCase2(rollno,fullName,date,testId,"Negative" ,email);
+            else 
+                s=new useCase2(rollno,fullName,date,testId,"Positive" ,email);
+        
         }
         catch ( SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
