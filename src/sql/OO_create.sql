@@ -58,7 +58,7 @@ create table dose(
     doseNo int,
     dateTaken Date,
     vaccineName varchar(15),
-    constraint pk_dose PRIMARY KEY(studentId,dateTaken,vaccineName)
+    constraint pk_dose PRIMARY KEY(studentId,doseNo)
 );
 
 create table login_t(
