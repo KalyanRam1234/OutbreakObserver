@@ -10,3 +10,5 @@ alter table posCase
     add constraint fk_case_qroomNo FOREIGN KEY (qroomNo) REFERENCES hostelRoom(roomNo);
 alter table posCase
     add constraint fk_case_testId FOREIGN KEY (testId) REFERENCES rtpcr(testId);
+-- alter table login_t
+--    add constraint fk_login_userid FOREIGN KEY (userid) REFERENCES student(StudentId);

@@ -1,2 +1,6 @@
 Hostel Room update vacancy;
 Case update.
+Vaccine updates
+In usecase1, need to check if values retrieved is null, or size of arraylist==0 for exception flow
+need to update exception flow of usecase2 where date is not present (will be done at the time of login. if rollno doesn't exist, then output "Contact Admin to add your details")
+exception handling left

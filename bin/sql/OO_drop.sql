@@ -16,6 +16,9 @@ ALTER TABLE posCase
 ALTER TABLE posCase
     DROP FOREIGN KEY fk_case_testId; 
 
+-- ALTER TABLE login_t
+--    DROP FOREIGN KEY fk_login_userid; 
+
 DROP TABLE student;
 DROP TABLE vaccination;
 DROP TABLE rtpcr;
@@ -23,5 +26,6 @@ DROP TABLE hostelRoom;
 DROP TABLE quarantine;
 DROP TABLE posCase;
 DROP TABLE dose;
+DROP TABLE login_t;
 
     

@@ -1,5 +1,7 @@
 import Student.*;
 import java.sql.*;
+
+import Login.*;
 import UseCases.UseCase1.*;
 import UseCases.useCase2.*;
 
@@ -10,12 +12,12 @@ public class DAO_Factory{
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/outbreakObserverDB?characterEncoding=latin1&useConfigs=maxPerformance";
 	static final String USER = "root";
-	static final String PASS = "jash123";
+	static final String PASS = "Kalyan#1234";
 	Connection dbconnection = null;
 
 	// You can add additional DAOs here as needed
 	StudentDAO studentDAO = null;
-
+	LoginDAO loginDAO=null;
 	useCase1_DAO usecase1=null;
 	useCase2_DAO usecase2=null;
 	boolean activeConnection = false;
@@ -58,6 +60,17 @@ public class DAO_Factory{
 			studentDAO = new StudentDAO_JDBC( dbconnection );
 
 		return studentDAO;
+	}
+
+	public LoginDAO getLoginDAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( studentDAO == null )
+			loginDAO = new LoginDAO_JDBC( dbconnection );
+
+		return loginDAO;
 	}
 	
 

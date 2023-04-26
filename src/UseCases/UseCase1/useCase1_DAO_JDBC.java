@@ -46,7 +46,6 @@ public class useCase1_DAO_JDBC implements useCase1_DAO{
             stmt=dbConnection.createStatement();
             sql="select s.studentId, concat(fname,' ',lname) as " + "Full_Name" + ", s.gender, s.roomNo, s.emailId, r.testId,r.testDate, r.test_result from student as s join rtpcr as r where s.studentId='" + rollNo+ "' and s.studentId=r.studentId and r.testDate='"+ Date +"'";
             ResultSet rs= stmt.executeQuery(sql);
-				//Retrieve by column name
             while(rs.next()){
                 s=getInfo(rs);
                 break;
@@ -111,6 +110,4 @@ public class useCase1_DAO_JDBC implements useCase1_DAO{
         }
         return list;
     }
-
-
 }
