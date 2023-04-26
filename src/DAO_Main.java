@@ -43,24 +43,24 @@ public class DAO_Main {
 
             AdminUI UI = new AdminUI();
             useCase6_DAO sdao = daoFactory.getuseCase6DAO();
-            UI.displayInfectedPrompt6();
-            Scanner sc = new Scanner(System.in);
-            int ig = sc.nextInt();
-            switch(ig)
-            {
-                case 1:{
-                    ArrayList<String> list = UI.displayUpdateInfected_Prompt1();
-                    list.
-                }
+            // UI.displayInfectedPrompt6();
+            // Scanner sc = new Scanner(System.in);
+            // int ig = sc.nextInt();
+            // switch(ig)
+            // {
+            //     case 1:{
+            //         ArrayList<String> list = UI.displayUpdateInfected_Prompt1();
+            //         list.
+            //     }
 
-                case 2:{
+            //     case 2:{
 
-                }
+            //     }
 
-                case 3:{
+            //     case 3:{
 
-                }
-            }
+            //     }
+            // }
             // useCase7_DAO sdao = daoFactory.getuseCase7DAO();
             // ArrayList<useCase7a> uc7a = sdao.getInfectedStudentsList();
             // ArrayList<ArrayList<useCase7b>> uc7b = sdao.getRooomatesOfInfectedStudents(uc7a);
