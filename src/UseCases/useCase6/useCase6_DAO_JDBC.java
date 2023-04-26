@@ -73,6 +73,7 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
   
              // execute insert SQL stetement
              preparedStatement.executeUpdate();
+             System.out.println("Data entered successfully.\n");
          } catch (SQLException e) {
               System.out.println(e.getMessage());
           }
@@ -89,8 +90,31 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
     @Override
     public void updateInfectedDetails(String studentId, String caseId, String name, String date, String testId,
             String qroomNo, String sdate, String edate, String healthStatus) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateInfectedDetails'");
+                PreparedStatement preparedStatement = null;																																																																																																																																													
+                String sql;
+                sql = "UPDATE student SET date=?, testId, qroomNo=?, sdate=?, edate=?, healthStatus=? WHERE studentId=?";
+        
+                try {
+                    preparedStatement = dbConnection.prepareStatement(sql);
+                    
+                    preparedStatement.setInt(2, student.getRollno());
+                    preparedStatement.setString(1, student.getName());
+                    // execute update SQL stetement
+                    preparedStatement.executeUpdate();
+         
+                    System.out.println("Student: Roll No " + student.getRollno() 
+                        + ", name updated in the database");
+                } catch (SQLException e) {
+                     System.out.println(e.getMessage());
+                 }
+        
+                try{
+                    if (preparedStatement != null) {
+                        preparedStatement.close();
+                    }
+                } catch (SQLException e) {
+                     System.out.println(e.getMessage());
+                 }
     }
 
     @Override
