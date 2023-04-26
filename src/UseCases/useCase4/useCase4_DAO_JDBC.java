@@ -38,7 +38,7 @@ public class useCase4_DAO_JDBC implements useCase4_DAO{
             String vaccination_status = rs.getString("vaccination_status");
             String dosesTaken=rs.getString("dosesTaken");
             
-            s=new useCase4b(id, name, vaccination_status, dosesTaken);
+            s=new useCase4b(id, name, dosesTaken, vaccination_status);
         }
         catch ( SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
@@ -50,6 +50,32 @@ public class useCase4_DAO_JDBC implements useCase4_DAO{
 
     @Override
     public ArrayList<useCase4> getStudentDoses(String rollNo) {
+        ArrayList<useCase4> list=new ArrayList<useCase4>(0);
+        String sql;
+		Statement stmt = null;
+
+        try{
+            stmt=dbConnection.createStatement();
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", d.doseNo, d.dateTaken, d.vaccineName from student as s join dose as d where s.studentId=d.studentId and s.studentId=\"" + rollNo + "\"";
+
+            ResultSet rs= stmt.executeQuery(sql);
+            
+            while(rs.next()){
+                useCase4 s=getInfo(rs);
+                list.add(s);
+            }
+
+        }
+        catch ( SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return list;
+    }
+
+    @Override
+    public ArrayList<useCase4> getAllStudentDoses() {
         ArrayList<useCase4> list=new ArrayList<useCase4>(0);
         String sql;
 		Statement stmt = null;
@@ -82,7 +108,7 @@ public class useCase4_DAO_JDBC implements useCase4_DAO{
 
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", v.vaccination_status as vaccination_status, v.dosesTaken as dosesTaken from student as s join vaccination as v on s.studentId=v.studentId";
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", v.vaccinationStatus as vaccination_status, v.dosesTaken as dosesTaken from student as s join vaccination as v on s.studentId=v.studentId";
 
             ResultSet rs= stmt.executeQuery(sql);
             
@@ -108,7 +134,7 @@ public class useCase4_DAO_JDBC implements useCase4_DAO{
 
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", v.vaccination_status as vaccination_status, v.dosesTaken as dosesTaken from student as s join vaccination as v on s.studentId=v.studentId where s.studentId like \"" + batch + "%\"";
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", v.vaccinationStatus as vaccination_status, v.dosesTaken as dosesTaken from student as s join vaccination as v on s.studentId=v.studentId where s.studentId like \"" + batch + "%\"";
 
             ResultSet rs= stmt.executeQuery(sql);
             
