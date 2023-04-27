@@ -19,9 +19,8 @@ public class useCase7_DAO_JDBC implements useCase7_DAO{
             String caseId = rs.getString("caseId");
             String hroomNo=rs.getString("hroomNo");
             String qroomNo=rs.getString("qroomNo");
-            String healthStatus=rs.getString("healthStatus");
             
-            s=new useCase7a(id, name, caseId, hroomNo, qroomNo, healthStatus);
+            s=new useCase7a(id, name, caseId, hroomNo, qroomNo, "null");
         }
         catch ( SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
@@ -76,7 +75,7 @@ public class useCase7_DAO_JDBC implements useCase7_DAO{
         try{
             stmt=dbConnection.createStatement();
             //studentId, name, caseId, hroomNo, qroomNo, healthStatus
-            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Name" + ", p.caseId as caseId, s.roomNo as hroomNo, p.qroomNo as qroomNo, q.healthStatus from student as s join posCase as p on s.studentId=p.studentId join quarantine as q on p.caseId=q.caseId";
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Name" + ", p.caseId as caseId, s.roomNo as hroomNo, p.qroomNo as qroomNo from student as s join posCase as p on s.studentId=p.studentId";
 
             ResultSet rs= stmt.executeQuery(sql);
             
@@ -114,11 +113,8 @@ public class useCase7_DAO_JDBC implements useCase7_DAO{
                 while(rs.next()){
                     
                     useCase7b s=getInfob(rs);
-                    if(s==null)
-                    System.out.println(22);
                     rlist.add(s);
                 }
-                System.out.println( rlist.size() );
                 list.add(rlist);
             }
             catch ( SQLException ex){

@@ -1,7 +1,10 @@
 import Student.*;
 import java.sql.*;
 
+import HostelRoom.HostelDAO;
+import HostelRoom.HostelDAO_JDBC;
 import Login.*;
+import RTPCR.*;
 import UseCases.UseCase1.*;
 import UseCases.useCase2.*;
 import UseCases.useCase3.useCase3_DAO;
@@ -14,6 +17,8 @@ import UseCases.useCase6.useCase6_DAO;
 import UseCases.useCase6.useCase6_DAO_JDBC;
 import UseCases.useCase7.useCase7_DAO;
 import UseCases.useCase7.useCase7_DAO_JDBC;
+import UseCases.useCase8.useCase8DAO;
+import UseCases.useCase8.useCase8DAO_JDBC;
 
 public class DAO_Factory{
 
@@ -28,6 +33,7 @@ public class DAO_Factory{
 	// You can add additional DAOs here as needed
 	StudentDAO studentDAO = null;
 	LoginDAO loginDAO=null;
+	RTPCRDAO rtpcrDAO=null;
 	useCase1_DAO usecase1=null;
 	useCase2_DAO usecase2=null;
 	useCase3_DAO usecase3=null;
@@ -35,6 +41,8 @@ public class DAO_Factory{
 	useCase5_DAO usecase5=null;
 	useCase6_DAO usecase6=null;
 	useCase7_DAO usecase7=null;
+	useCase8DAO usecase8=null;
+	HostelDAO hostel=null;
 	boolean activeConnection = false;
 
 	public DAO_Factory()
@@ -45,8 +53,9 @@ public class DAO_Factory{
 
 	public void activateConnection() throws Exception
 	{
+		
 		if( activeConnection == true )
-			throw new Exception("Connection already active");
+			return;
 
 		System.out.println("Connecting to database...");
 		try{
@@ -88,6 +97,16 @@ public class DAO_Factory{
 		return loginDAO;
 	}
 	
+	public RTPCRDAO getRTPCRDAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( rtpcrDAO == null )
+			rtpcrDAO = new RTPCRDAO_JDBC( dbconnection );
+
+		return rtpcrDAO;
+	}
 
 	public useCase1_DAO getuseCase1DAO() throws Exception
 	{
@@ -165,6 +184,27 @@ public class DAO_Factory{
 		return usecase7;
 	}
 
+	public useCase8DAO getuseCase8DAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( usecase7 == null )
+			usecase8 = new useCase8DAO_JDBC( dbconnection );
+
+		return usecase8;
+	}
+
+	public HostelDAO getHostelDAO() throws Exception
+	{
+		if( activeConnection == false )
+			throw new Exception("Connection not activated...");
+
+		if( hostel == null )
+			hostel = new HostelDAO_JDBC( dbconnection );
+
+		return hostel;
+	}
 	public void deactivateConnection( TXN_STATUS txn_status )
 	{
 		// Okay to keep deactivating an already deactivated connection
@@ -181,6 +221,18 @@ public class DAO_Factory{
 
 				// Nullify all DAO objects
 				studentDAO = null;
+				rtpcrDAO=null;
+				loginDAO=null;
+				rtpcrDAO=null;
+				usecase1=null;
+				usecase2=null;
+				usecase3=null;
+				usecase4=null;
+				usecase5=null;
+				usecase6=null;
+				usecase7=null;
+				usecase8=null;
+				hostel=null;
 			}
 			catch (SQLException ex) {
 			    // handle any errors

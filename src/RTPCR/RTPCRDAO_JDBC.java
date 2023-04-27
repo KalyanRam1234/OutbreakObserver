@@ -2,12 +2,14 @@ package RTPCR;
 
 import java.sql.*;
 import java.util.ArrayList;
-
+import Case.*;
 public class RTPCRDAO_JDBC implements RTPCRDAO{
     Connection dbConnection;
+    CaseDAO dao;
 
     public RTPCRDAO_JDBC(Connection dbconn){
         dbConnection=dbconn;
+        dao=new CaseDAO_JDBC(dbConnection);
     }
 
     @Override
@@ -182,23 +184,49 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
     }
 
     @Override
-    public void enterRTPCR(String testId, String studentId, String testDate,int testResult,String certif)
+    public void enterRTPCR(RTPCR test)
     {
-        PreparedStatement preparedStatement = null;																																																																																																																																													
-		String sql;
-		sql = "insert into rtpcr(testId, studentId, testDate, testResult, certif) values (?,?,?,?,?)";
+        PreparedStatement preparedStatement = null;													
+        Statement stmt = null;																		
+		String sql,retrieve, insert;
 
+		sql = "insert into rtpcr(testId, studentId, testDate, test_result, certif) values (?,?,?,?,?)";
+
+        retrieve="select count(*) as count from rtpcr";
+
+        insert="insert into posCase(caseId,studentId,qroomNo,testId,diagnosisDate) values(?,?,?,?,?)";
 		try {
+            stmt=dbConnection.createStatement();
+            ResultSet rs= stmt.executeQuery(retrieve);
+            rs.next();
+            int count=rs.getInt("count")+1;
+            String testid="RT"+count;
 			preparedStatement = dbConnection.prepareStatement(sql);
  
-			preparedStatement.setString(1, testId);
-			preparedStatement.setString(2, studentId);
-            preparedStatement.setString(3, testDate);
-            preparedStatement.setInt(4, testResult);
-            preparedStatement.setString(5, certif);
+			preparedStatement.setString(1, testid);
+			preparedStatement.setString(2, test.getstudentId());
+            preparedStatement.setString(3, test.gettestDate());
+            if(test.gettest_Result().equals("Positive")) preparedStatement.setInt(4, 1);
+            else if(test.gettest_Result().equals("Negative")) preparedStatement.setInt(4, 0);
+            preparedStatement.setString(5, "NULL");
  
 			// execute insert SQL stetement
 			preparedStatement.executeUpdate();
+
+            if(test.gettest_Result().equals("Positive")){
+                int caseid=dao.getTotalCases()+1;
+                String id="case"+caseid;
+
+                preparedStatement = dbConnection.prepareStatement(insert);
+                preparedStatement.setString(1, id);
+                preparedStatement.setString(2, test.getstudentId());
+                preparedStatement.setString(3,null);
+                preparedStatement.setString(4, testid);
+
+                preparedStatement.setString(5, test.gettestDate());
+                preparedStatement.executeUpdate();
+            }
+            System.out.println("Data was entered successfully.\n");
 
 		} catch (SQLException e) {
  			System.out.println(e.getMessage());

@@ -19,7 +19,7 @@ public class HostelDAO_JDBC implements HostelDAO {
         
         try{
             stmt=dbConnection.createStatement();
-            sql="select * from hostelRoom where roomNo= " + roomno;
+            sql="select * from hostelRoom where roomNo= '" + roomno+"'";
             ResultSet rs= stmt.executeQuery(sql);
 
             while(rs.next()){
@@ -52,12 +52,10 @@ public class HostelDAO_JDBC implements HostelDAO {
         try{
             stmt=dbConnection.createStatement();
 
-            if(hostelType.equals(null))
+            if(hostelType.equals("Hostel"))
                 sql="select * from hostelRoom where roomType=\"Hostel\"";
-            else if(hostelType.equals("Mens"))
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND  hostelType=\"Mens\"";
             else
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND  hostelType=\"Womens\"";
+                sql="select * from hostelRoom where roomType=\"Quarantine\"";
             
             ResultSet rs= stmt.executeQuery(sql);
             while(rs.next()){
@@ -83,12 +81,10 @@ public class HostelDAO_JDBC implements HostelDAO {
         try{
             stmt=dbConnection.createStatement();
 
-            if(hostelType.equals(null))
+            if(hostelType.equals("Hostel"))
                 sql="select * from hostelRoom where roomType=\"Hostel\"";
-            else if(hostelType.equals("Mens"))
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND  hostelType=\"Mens\"";
             else
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND  hostelType=\"Womens\"";
+                sql="select * from hostelRoom where roomType=\"Quarantine\"";
             
             ResultSet rs= stmt.executeQuery(sql);
             while(rs.next()){
@@ -105,6 +101,36 @@ public class HostelDAO_JDBC implements HostelDAO {
         return total_capacity;
     }
 
+    @Override
+    public ArrayList<HostelRoom> getallRooms() {
+        ArrayList<HostelRoom> hr_list = new ArrayList<HostelRoom>();
+        String sql;
+		Statement stmt = null;
+        
+        try{
+            stmt=dbConnection.createStatement();
+            sql="select * from hostelRoom where roomType='Quarantine'";
+            
+            ResultSet rs= stmt.executeQuery(sql);
+            while(rs.next()){
+                String roomNo  = rs.getString("roomNo");
+                String roomType = rs.getString("roomType");
+                String capacity= rs.getString("capacity");
+                String vacancy = rs.getString("vacancy");
+                String hostelType1 = rs.getString("hostelType");
+
+                HostelRoom hr = new HostelRoom(roomNo, roomType, Integer.parseInt(capacity), Integer.parseInt(vacancy), hostelType1);
+                hr_list.add(hr);
+            }
+        }
+        catch ( SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+        }
+
+        return hr_list;
+    }
 
     @Override
     public ArrayList<HostelRoom> getEmptyHRooms(String hostelType) {

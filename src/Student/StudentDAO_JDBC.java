@@ -101,6 +101,26 @@ public class StudentDAO_JDBC implements StudentDAO{
     }
 
     @Override
+    public int getStudentCountByBatch(String batch){
+        String sql;
+		Statement stmt = null;
+        int count=0;
+        try{
+            stmt=dbConnection.createStatement();
+            sql="select count(*) as count from student where studentId like '%" + batch + "%'" ;
+            ResultSet rs= stmt.executeQuery(sql);
+            rs.next();
+            count=rs.getInt("count");
+        }
+        catch ( SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return count;
+    }
+
+    @Override
     public ArrayList<Student> getStudentByRoomNo(String roomno) {
         ArrayList<Student> slist=new ArrayList<Student>();
         String sql;

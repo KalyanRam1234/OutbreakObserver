@@ -9,4 +9,5 @@ public interface HostelDAO {
     public ArrayList<HostelRoom> getEmptyHRooms(String hostelType);
     public void enterHostelRoom(String roomno, String roomType, int vacancy, int capacity, String hostelType); // insert
     public void deleteHostelRoom(String roomNo);   // delete
+    public ArrayList<HostelRoom> getallRooms();
 }

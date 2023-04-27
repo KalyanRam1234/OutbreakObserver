@@ -172,7 +172,7 @@ INSERT INTO login_t(userid, userpass) VALUES("MT2021002", MD5("RedRose@91"));
 INSERT INTO login_t(userid, userpass) VALUES("MT2022001", MD5("BlueSea!65"));
 INSERT INTO login_t(userid, userpass) VALUES("MT2022002", MD5("PinkFlower#73"));
 INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", MD5("YellowSun#98"));
-INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", MD5("IamAdmin@001"));
+INSERT INTO login_t(userid, userpass) VALUES("Admin", MD5("Admin"));
 
 -- INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", null);
 -- INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", null);

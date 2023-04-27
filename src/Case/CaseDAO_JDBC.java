@@ -37,6 +37,24 @@ public class CaseDAO_JDBC implements CaseDAO{
  			System.out.println(e.getMessage());
  		}        
     }
+	@Override
+	public int getTotalCases(){
+		Statement stmt = null;
+		String sql="select count(*) as count from posCase";
+		try{
+			stmt=dbConnection.createStatement();
+			ResultSet rs= stmt.executeQuery(sql);
+            rs.next();
+            int count=rs.getInt("count");
+			return count;
+		}
+		catch ( SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+		    System.out.println("SQLState: " + ex.getSQLState());
+		    System.out.println("VendorError: " + ex.getErrorCode());
+        }
+		return 0;
+	}
 
     @Override
     public void deleteCase(String caseId, String studentId) {

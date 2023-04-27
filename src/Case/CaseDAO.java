@@ -5,4 +5,5 @@ public interface CaseDAO {
     public void deleteCase(String caseId, String studentId);
     public Case getCaseByCaseId(String caseId);
     public Case getCaseByStudentId(String studentId); 
+    public int getTotalCases();
 }

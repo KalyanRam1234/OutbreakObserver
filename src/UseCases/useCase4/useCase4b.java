@@ -15,6 +15,6 @@ public class useCase4b {
 
     public String getstudentId() { return studentId;}
     public String getName() { return name; }
-    public String getDate() { return dosesTaken; }
+    public String getDosesTaken() { return dosesTaken; }
     public String getVaccinationStatus() { return vaccination_status;}    
 }
