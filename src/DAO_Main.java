@@ -16,6 +16,8 @@ import UseCases.useCase7.useCase7b;
 import UseCases.useCase8.useCase8;
 import UseCases.useCase8.useCase8DAO;
 import UIUX.AdminUI;
+import UIUX.ClientUI;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,7 +92,8 @@ public class DAO_Main {
         
         try{
             daoFactory = new DAO_Factory();          
-            // If Admin accesses the system. Then the following control should be executed:
+            // If Admin accesses the system. Then the following control should be executed:\
+            ClientUI UIC=new ClientUI();
             AdminUI UI = new AdminUI();
             boolean flag = false;
 
@@ -352,7 +355,34 @@ public class DAO_Main {
                 sc.next();
             }
             }
-            
+
+            else{
+                while(true){
+                    daoFactory.activateConnection();  
+                    System.out.print("\033[H\033[2J");  
+                    System.out.flush();
+                    int i = UI.displayIntialPrompt();
+                    
+                    switch(i){
+                        case 1:{
+
+                            break;
+                        }
+                        case 2: {
+
+                            break;
+                        }
+                        case 3: {
+                            flag=true;
+                            break;
+                        }
+                    }
+
+                    if(flag) break;
+                    System.out.println("Please 0 enter to continue");
+                    sc.next();
+                }
+            }
 
             daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
 
