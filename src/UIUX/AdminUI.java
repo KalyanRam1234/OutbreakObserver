@@ -610,47 +610,46 @@ public class AdminUI
         System.out.println("                         \033[3m Track the spread, Fight covid-19, Protect your community.\033[0m\n"); 
             
         System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Chose an option to fetch the RTPCR details the way you want: \n");  
-        System.out.println("\t 1) Enter infected students details list.");
-        System.out.println("\t 2) Update infected students details list.");
-        System.out.println("\t 3) Remove a case from the infected students List. Since the case is no longer valid");
+        System.out.println("\t 1) Update infected students details list.");
+        System.out.println("\t 2) Remove a case from the infected students List. Since the case is no longer valid");
         
         int i=-1;
         while(true){
             String s = sc.next();
             if(s.equals("quit")) s="-1";
-            if(s.equals("-1") || s.equals("1") || s.equals("2") || s.equals("3") ) { i=Integer.parseInt(s); return i;} 
+            if(s.equals("-1") || s.equals("1") || s.equals("2")) { i=Integer.parseInt(s); return i;} 
         }
     }
 
-    public ArrayList<String> displayUpdateInfected_Prompt1()
-    {
-        Scanner sc = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<String>();
+    // public ArrayList<String> displayUpdateInfected_Prompt1()
+    // {
+    //     Scanner sc = new Scanner(System.in);
+    //     ArrayList<String> list = new ArrayList<String>();
 
-        System.out.println("******************************************** OUTBREAK OBSERVER ********************************************************");
-        System.out.println("                         \033[3m Track the spread, Fight covid-19, Protect your community.\033[0m\n"); 
+    //     System.out.println("******************************************** OUTBREAK OBSERVER ********************************************************");
+    //     System.out.println("                         \033[3m Track the spread, Fight covid-19, Protect your community.\033[0m\n"); 
             
-        System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Enter the infected details details (keep in mind that the caseId must be unique, sid must exist) :\n\n");
-        //need to change this
-        System.out.println("caseId: ");
-        list.add( sc.nextLine() );
-        System.out.println("studentId: ");
-        list.add( sc.nextLine() );  
-        System.out.println("qroomNo: ");
-        list.add( sc.nextLine() );
-        System.out.println("testId: ");
-        list.add( sc.nextLine() );
-        System.out.println("diagnosisDate: ");
-        list.add( sc.nextLine() );
-        System.out.println("startDate: ");
-        list.add( sc.nextLine() );
-        System.out.println("endDate: ");
-        list.add( sc.nextLine() );
-        System.out.println("healthStatus: ");
-        list.add( sc.nextLine() );
+    //     System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Enter the infected details details (keep in mind that the caseId must be unique, sid must exist) :\n\n");
+    //     //need to change this
+    //     System.out.println("caseId: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("studentId: ");
+    //     list.add( sc.nextLine() );  
+    //     System.out.println("qroomNo: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("testId: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("diagnosisDate: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("startDate: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("endDate: ");
+    //     list.add( sc.nextLine() );
+    //     System.out.println("healthStatus: ");
+    //     list.add( sc.nextLine() );
 
-        return list;
-    }
+    //     return list;
+    // }
 
     public ArrayList<String> displayUpdateInfected_Prompt2()
     {
@@ -662,12 +661,6 @@ public class AdminUI
             
         System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Here you can update the infected details. Please mention the caseId of the case. And proceed to update. Enter \"NULL\" wherever you don't want to modify:\n\n");
         System.out.println("caseId: ");
-        list.add( sc.nextLine() );
-        System.out.println("qroomNo: ");
-        list.add( sc.nextLine() );
-        System.out.println("testId: ");
-        list.add( sc.nextLine() );
-        System.out.println("diagnosisDate: ");
         list.add( sc.nextLine() );
         System.out.println("startDate: ");
         list.add( sc.nextLine() );

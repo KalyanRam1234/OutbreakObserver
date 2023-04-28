@@ -146,19 +146,17 @@ INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT05
 INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT059","IMT2021003","2023-04-12",0,NULL);
 INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT060","MT2022001","2023-04-12",1,NULL);
 
-
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case001", "2023-02-22", "2023-03-06",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case002", "2023-03-29", "2023-04-13",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case003", "2023-03-29", "2023-04-13",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case004", "2023-04-12", "2023-04-27",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case005", "2023-04-12", "2023-04-27",NULL);
-
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case001", "MT2021001", "B203", "RT015", "2023-02-22");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case002", "IMT2022001", "B201", "RT025", "2023-03-29");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case003", "IMT2021001", "B202", "RT035", "2023-03-29");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case004", "IMT2021004", "L201", "RT053", "2023-04-12");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case005", "MT2022001", "L202", "RT060", "2023-04-12");
 
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case001", "2023-02-22", "2023-03-06",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case002", "2023-03-29", "2023-04-13",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case003", "2023-03-29", "2023-04-13",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case004", "2023-04-12", "2023-04-27",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case005", "2023-04-12", "2023-04-27",NULL);
 
 INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("Sunset2Star!"));
 INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("Treehouse#32"));

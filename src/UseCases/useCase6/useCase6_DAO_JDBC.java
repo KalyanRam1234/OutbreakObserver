@@ -32,78 +32,76 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
     }
 
 
-    public void enterInfectedDetails(String studentId, String caseId, String name, String date, String testId, String qroomNo, String sdate, String edate, String healthStatus)
-    {
-        PreparedStatement preparedStatement = null;																		
-		String sql;
-		sql = "insert into posCase(caseId, studentId, qroomNo, testId, diagnosisDate) values (?,?,?,?,?)";
+    // public void enterInfectedDetails(String studentId, String caseId, String name, String date, String testId, String qroomNo, String sdate, String edate, String healthStatus)
+    // {
+    //     PreparedStatement preparedStatement = null;																		
+	// 	String sql;
+	// 	sql = "insert into posCase(caseId, studentId, qroomNo, testId, diagnosisDate) values (?,?,?,?,?)";
 
-		try {
-			preparedStatement = dbConnection.prepareStatement(sql);
+	// 	try {
+	// 		preparedStatement = dbConnection.prepareStatement(sql);
  
-			preparedStatement.setString(1, studentId);
-			preparedStatement.setString(2, caseId);
-            preparedStatement.setString(3, date);
-            preparedStatement.setString(4, testId);
-            preparedStatement.setString(5, qroomNo);
+	// 		preparedStatement.setString(1, studentId);
+	// 		preparedStatement.setString(2, caseId);
+    //         preparedStatement.setString(3, date);
+    //         preparedStatement.setString(4, testId);
+    //         preparedStatement.setString(5, qroomNo);
  
-			// execute insert SQL stetement
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
- 			System.out.println(e.getMessage());
- 		}
+	// 		// execute insert SQL stetement
+	// 		preparedStatement.executeUpdate();
+	// 	} catch (SQLException e) {
+ 	// 		System.out.println(e.getMessage());
+ 	// 	}
 
-		try{
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
-		} catch (SQLException e) {
- 			System.out.println(e.getMessage());
- 		}
+	// 	try{
+	// 		if (preparedStatement != null) {
+	// 			preparedStatement.close();
+	// 		}
+	// 	} catch (SQLException e) {
+ 	// 		System.out.println(e.getMessage());
+ 	// 	}
 
-         sql = "insert into quarantine(caseId, startDate, endDate, healthStatus) values (?,?,?,?)";
+    //      sql = "insert into quarantine(caseId, startDate, endDate, healthStatus) values (?,?,?,?)";
  
-         try {
-             preparedStatement = dbConnection.prepareStatement(sql);
+    //      try {
+    //          preparedStatement = dbConnection.prepareStatement(sql);
   
-             preparedStatement.setString(1, caseId);
-             preparedStatement.setString(2, sdate);
-             preparedStatement.setString(3, edate);
-             preparedStatement.setString(4, healthStatus);
+    //          preparedStatement.setString(1, caseId);
+    //          preparedStatement.setString(2, sdate);
+    //          preparedStatement.setString(3, edate);
+    //          preparedStatement.setString(4, healthStatus);
   
-             // execute insert SQL stetement
-             preparedStatement.executeUpdate();
-             System.out.println("Data entered successfully.\n");
-         } catch (SQLException e) {
-              System.out.println(e.getMessage());
-          }
+    //          // execute insert SQL stetement
+    //          preparedStatement.executeUpdate();
+    //          System.out.println("Data entered successfully.\n");
+    //      } catch (SQLException e) {
+    //           System.out.println(e.getMessage());
+    //       }
  
-         try{
-             if (preparedStatement != null) {
-                 preparedStatement.close();
-             }
-         } catch (SQLException e) {
-              System.out.println(e.getMessage());
-          }
-    }
+    //      try{
+    //          if (preparedStatement != null) {
+    //              preparedStatement.close();
+    //          }
+    //      } catch (SQLException e) {
+    //           System.out.println(e.getMessage());
+    //       }
+    // }
 
     @Override
-    public void updateInfectedDetails(String studentId, String caseId, String name, String date, String testId,
-            String qroomNo, String sdate, String edate, String healthStatus) {
+    public void updateInfectedDetails(String caseid, String sdate, String edate, String healthStatus) {
                 PreparedStatement preparedStatement = null;																																																																																																																																													
                 String sql;
-                sql = "UPDATE student SET date=?, testId, qroomNo=?, sdate=?, edate=?, healthStatus=? WHERE studentId=?";
+                sql = "UPDATE quarantine SET caseId=?, startDate=?, endDate=?, healthStatus=? WHERE caseId=?";
         
                 try {
                     preparedStatement = dbConnection.prepareStatement(sql);
                     
-                    preparedStatement.setInt(2, student.getRollno());
-                    preparedStatement.setString(1, student.getName());
+                    preparedStatement.setString(1,caseid);
+                    preparedStatement.setString(2, sdate);
+                    preparedStatement.setString(3, edate);
+                    preparedStatement.setString(4, healthStatus);
                     // execute update SQL stetement
                     preparedStatement.executeUpdate();
-         
-                    System.out.println("Student: Roll No " + student.getRollno() 
-                        + ", name updated in the database");
                 } catch (SQLException e) {
                      System.out.println(e.getMessage());
                  }
@@ -119,7 +117,27 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
 
     @Override
     public void removeInfectedDetails(String caseId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeInfectedDetails'");
+        PreparedStatement preparedStatement = null;																																																																																																																																													
+		String sql;
+		sql = "DELETE FROM posCase WHERE caseId=?";
+
+		try {
+			preparedStatement = dbConnection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, caseId);
+			// execute update SQL stetement
+			preparedStatement.executeUpdate();
+ 
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
+
+		try{
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 		}
     }
 }

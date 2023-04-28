@@ -251,33 +251,30 @@ public class DAO_Main {
                         break;
                     }
 
-                    case 6:{ //needs to be done properly
+                    case 6:
+                    { 
                         System.out.print("\033[H\033[2J");  
                         System.out.flush();
 
+                        System.out.println("sdj111111");
                         useCase6_DAO sdao = daoFactory.getuseCase6DAO();
                         
                         int i5 = UI.displayInfectedPrompt6();
                        
+                        System.out.println("sdjhfjah");
                         System.out.print("\033[H\033[2J");  
                         System.out.flush();
                         
                         switch(i5)
                         {
                             case 1:{
-                                ArrayList<String> list = UI.displayUpdateInfected_Prompt1();
-                                sdao.enterInfectedDetails(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), list.get(8));
-                                break;
-                            }
-
-                            case 2:{
                                 ArrayList<String> list = UI.displayUpdateInfected_Prompt2();
-                                sdao.updateInfectedDetails(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), list.get(8));
+                                sdao.updateInfectedDetails(list.get(0), list.get(1), list.get(2), list.get(3));
                                 
                                 break;
                             }
 
-                            case 3:{
+                            case 2:{
                                 ArrayList<String> list = UI.displayUpdateInfected_Prompt3();
                                 sdao.removeInfectedDetails(list.get(0));
                                 break;

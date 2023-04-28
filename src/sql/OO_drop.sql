@@ -16,6 +16,12 @@ ALTER TABLE posCase
 ALTER TABLE posCase
     DROP FOREIGN KEY fk_case_testId; 
 
+ALTER TABLE posCase
+    DROP FOREIGN KEY fk_quarantine_caseId; 
+
+ALTER TABLE posCase
+    DROP FOREIGN KEY fk_dose_studentId; 
+
 -- ALTER TABLE login_t
 --    DROP FOREIGN KEY fk_login_userid; 
 
