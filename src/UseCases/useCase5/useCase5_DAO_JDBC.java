@@ -39,7 +39,7 @@ public class useCase5_DAO_JDBC implements useCase5_DAO{
 
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", p.diagnosisDate as diagnosis_date, p.testId as testId, p.qroomNo as qroomNo, q.healthStatus as healthStatus from student as s join posCase as p on s.studentId=p.studentId join quarantine as q on p.caseId=q.caseId";
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", p.diagnosisDate as diagnosis_date, p.testId as testId, p.qroomNo as qroomNo, q.healthStatus as healthStatus from student as s join posCase as p on s.studentId=p.studentId left join quarantine as q on p.caseId=q.caseId";
 
             ResultSet rs= stmt.executeQuery(sql);
             
@@ -64,7 +64,7 @@ public class useCase5_DAO_JDBC implements useCase5_DAO{
 
         try{
             stmt=dbConnection.createStatement();
-            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", p.diagnosisDate as diagnosis_date, p.testId as testId, p.qroomNo as qroomNo, q.healthStatus as healthStatus from student as s join posCase as p on s.studentId=p.studentId join quarantine as q on p.caseId=q.caseId where s.studentId like \"" + batch + "%\"";
+            sql="select s.studentId as studentId, concat(fname,' ',lname) as " + "Full_Name" + ", p.diagnosisDate as diagnosis_date, p.testId as testId, p.qroomNo as qroomNo, q.healthStatus as healthStatus from student as s join posCase as p on s.studentId=p.studentId left join quarantine as q on p.caseId=q.caseId where s.studentId like \"" + batch + "%\"";
 
             ResultSet rs= stmt.executeQuery(sql);
             
