@@ -92,7 +92,6 @@ public class DAO_Main {
         
         try{
             daoFactory = new DAO_Factory();          
-            // If Admin accesses the system. Then the following control should be executed:\
             ClientUI UIC=new ClientUI();
             AdminUI UI = new AdminUI();
             boolean flag = false;
@@ -337,6 +336,12 @@ public class DAO_Main {
                                 UI.PrintQuarantine(hostel, hrr.getHostelCapacity("Quarantine"), hrr.getHostelVacancy("Quarantine"));
                                 break;
                             }
+
+                            case 4:{
+                                HostelDAO hrr=daoFactory.getHostelDAO();
+                                ArrayList<HostelRoom> hostel = hrr.getEmptyHRooms();
+                                UI.PrintQuarantine(hostel, hrr.getHostelCapacity("Quarantine"), hrr.getHostelVacancy("Quarantine"));
+                            }
                         }
                         break;
                     }
@@ -361,15 +366,19 @@ public class DAO_Main {
                     daoFactory.activateConnection();  
                     System.out.print("\033[H\033[2J");  
                     System.out.flush();
-                    int i = UI.displayIntialPrompt();
+                    int i = UIC.displayIntialPrompt(user);
                     
                     switch(i){
                         case 1:{
-
+                            useCase1_DAO sdao=daoFactory.getuseCase1DAO();
+                            ArrayList<useCase1> list = sdao.getStudentRTPCR_Status(user);
+                            UI.displayRTPCRDetailsOfStudent(list);
                             break;
                         }
                         case 2: {
-
+                            useCase4_DAO sdao=daoFactory.getuseCase4DAO();
+                            ArrayList<useCase4> list = sdao.getStudentDoses(user);
+                            UI.displayVaccinationDetailsOfStudent(list);
                             break;
                         }
                         case 3: {

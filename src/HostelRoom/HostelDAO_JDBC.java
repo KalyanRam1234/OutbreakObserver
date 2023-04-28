@@ -109,7 +109,7 @@ public class HostelDAO_JDBC implements HostelDAO {
         
         try{
             stmt=dbConnection.createStatement();
-            sql="select * from hostelRoom where roomType='Quarantine'";
+            sql="select * from hostelRoom where roomType='Quarantine' order by vacancy";
             
             ResultSet rs= stmt.executeQuery(sql);
             while(rs.next()){
@@ -133,7 +133,7 @@ public class HostelDAO_JDBC implements HostelDAO {
     }
 
     @Override
-    public ArrayList<HostelRoom> getEmptyHRooms(String hostelType) {
+    public ArrayList<HostelRoom> getEmptyHRooms() {
         ArrayList<HostelRoom> hr_list = new ArrayList<HostelRoom>();
         String sql;
 		Statement stmt = null;
@@ -141,13 +141,9 @@ public class HostelDAO_JDBC implements HostelDAO {
         try{
             stmt=dbConnection.createStatement();
 
-            if(hostelType.equals(null))
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND vacancy>0";
-            else if(hostelType.equals("Mens"))
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND vacancy>0 AND  hostelType=\"Mens\"";
-            else
-                sql="select * from hostelRoom where roomType=\"Hostel\" AND vacancy>0 AND  hostelType=\"Womens\"";
-            
+        
+                sql="select * from hostelRoom where roomType=\"Quarantine\" AND vacancy>0";
+           
             ResultSet rs= stmt.executeQuery(sql);
             while(rs.next()){
                 String roomNo  = rs.getString("roomNo");

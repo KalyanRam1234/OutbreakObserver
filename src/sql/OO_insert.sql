@@ -44,13 +44,13 @@ INSERT INTO student(studentId, fname, lname, dateOfBirth, emailId, gender, branc
 INSERT INTO student(studentId, fname, lname, dateOfBirth, emailId, gender, branch, roomNo) VALUES("IMT2021004", "Harshini", "Joshi", "2002-10-30", "Harshini.Joshi@iiitb.ac.in", "F", "ECE", "L101");
 
 
-INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022001",2,NULL,NULL);
-INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022002",3,NULL,NULL);
-INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022003",2,NULL,NULL);
+INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022001",2,"Done",NULL);
+INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022002",3,"Done",NULL);
+INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022003",2,"Done",NULL);
 INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2022004",3,NULL,NULL);
 INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021001",2,NULL,NULL);
-INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021002",1,NULL,NULL);
-INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021003",2,NULL,NULL);
+INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021002",1,"Incomplete",NULL);
+INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021003",2,"Done",NULL);
 INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("IMT2021004",2,NULL,NULL);
 INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("MT2022001",2,NULL,NULL);
 INSERT INTO vaccination(studentId,dosesTaken,vaccinationStatus,certif) VALUES("MT2022002",1,NULL,NULL);
@@ -147,11 +147,11 @@ INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT05
 INSERT INTO rtpcr(testId, studentId, testDate, test_result, certif) VALUES("RT060","MT2022001","2023-04-12",1,NULL);
 
 
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case001", "2023-02-22", "2023-03-06",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case002", "2023-03-29", "2023-04-13",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case003", "2023-03-29", "2023-04-13",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case004", "2023-04-12", "2023-04-27",NULL);
-INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case005", "2023-04-12", "2023-04-27",NULL);
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case001", "2023-02-22", "2023-03-06", "Good");
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case002", "2023-03-29", "2023-04-13","Good");
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case003", "2023-03-29", "2023-04-13","Decent");
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case004", "2023-04-12", "2023-04-27","Bad");
+INSERT INTO quarantine(caseId, startDate, endDate, healthStatus) VALUES("case005", "2023-04-12", "2023-04-27","Critical");
 
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case001", "MT2021001", "B203", "RT015", "2023-02-22");
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case002", "IMT2022001", "B201", "RT025", "2023-03-29");
@@ -160,33 +160,21 @@ INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("c
 INSERT INTO posCase(caseId, studentId, qroomNo, testId, diagnosisDate) VALUES("case005", "MT2022001", "L202", "RT060", "2023-04-12");
 
 
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("Sunset2Star!"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("Treehouse#32"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", MD5("OceanView$19"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", MD5("HappyDayz@77"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", MD5("PurpleSky$12"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", MD5("GoldenSun!28"));
-INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", MD5("SilverMoon#45"));
-INSERT INTO login_t(userid, userpass) VALUES("MT2021001", MD5("GreenGrass$36"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", MD5("IMT2022001"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", MD5("IMT2022002"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", MD5("IMT2022003"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", MD5("IMT2022004"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", MD5("IMT2021001"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", MD5("IMT2021002"));
+INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", MD5("IMT2021003"));
+INSERT INTO login_t(userid, userpass) VALUES("MT2021001", MD5("MT2021001"));
 INSERT INTO login_t(userid, userpass) VALUES("MT2021002", MD5("RedRose@91"));
 INSERT INTO login_t(userid, userpass) VALUES("MT2022001", MD5("BlueSea!65"));
 INSERT INTO login_t(userid, userpass) VALUES("MT2022002", MD5("PinkFlower#73"));
 INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", MD5("YellowSun#98"));
 INSERT INTO login_t(userid, userpass) VALUES("Admin", MD5("Admin"));
 
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2022001", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2022002", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2022003", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2022004", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2021001", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2021002", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2021003", null);
--- INSERT INTO login_t(userid, userpass) VALUES("MT2021001", null);
--- INSERT INTO login_t(userid, userpass) VALUES("MT2021002", null);
--- INSERT INTO login_t(userid, userpass) VALUES("MT2022001", null);
--- INSERT INTO login_t(userid, userpass) VALUES("MT2022002", null);
--- INSERT INTO login_t(userid, userpass) VALUES("IMT2021004", null);
--- INSERT INTO login_t(userid, userpass) VALUES("ADMIN1111001", null);
+
 
 
 
