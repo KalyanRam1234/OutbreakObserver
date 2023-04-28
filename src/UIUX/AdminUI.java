@@ -725,13 +725,13 @@ public class AdminUI
         System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Chose an option to fetch the Hostel and Quarantine details the way you want: \n");  
         System.out.println("\t 1) Get Hostel Room details based on RoomNo");
         System.out.println("\t 2) Get Hostel Room details of all rooms");
-        System.out.println("\t 3) Get Quarantine Room details");
-        
+        System.out.println("\t 3) Get All Quarantine Room details");
+        System.out.println("\t 4) Get Empty Quarantine Room details");
         int i=-1;
         while(true){
             String s = sc.next();
             if(s.equals("quit")) s="-1";
-            if(s.equals("-1") || s.equals("1") || s.equals("2") || s.equals("3") ) { i=Integer.parseInt(s); return i;} 
+            if(s.equals("-1") || s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") ) { i=Integer.parseInt(s); return i;} 
         }
     }
 
@@ -781,14 +781,14 @@ public class AdminUI
             
         System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Here is the list of hostel rooms:\n\n");
 
-        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
         System.out.println("| RoomNo| HostelType\t\t| Capacity\t\t| Vacancy\t\t|");
-        System.out.println("---------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
         
         for(int i=0; i<hostel.size(); i++)
         {
             System.out.println(String.format("| %s\t| %-20s\t| %-20d\t| %-15d\t|", hostel.get(i).getroomNo(), hostel.get(i).gethostelType(), hostel.get(i).getCapacity(), hostel.get(i).getVacancy()));
-        System.out.println("----------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
         }
 
 

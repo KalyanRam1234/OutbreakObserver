@@ -49,7 +49,7 @@ public class useCase8DAO_JDBC implements useCase8DAO {
         try{
             stmt=dbConnection.createStatement();
             if(hostelType.equals("Hostel"))
-            sql="select s.studentId as 'sid', concat(s.fname,' ',s.lname) as 'Name',r.roomNo as 'rno',r.capacity as 'rc',r.vacancy as 'rv', r.hostelType as 'rh' from student as s join hostelRoom as r where s.roomNo=r.roomNo and r.roomType='"+hostelType +"'";
+            sql="select s.studentId as 'sid', concat(s.fname,' ',s.lname) as 'Name',r.roomNo as 'rno',r.capacity as 'rc',r.vacancy as 'rv', r.hostelType as 'rh' from student as s join hostelRoom as r where s.roomNo=r.roomNo and r.roomType='"+hostelType +"' order by rv";
 
             ResultSet rs= stmt.executeQuery(sql);
             while(rs.next()){
