@@ -659,8 +659,10 @@ public class AdminUI
         System.out.println("******************************************** OUTBREAK OBSERVER ********************************************************");
         System.out.println("                         \033[3m Track the spread, Fight covid-19, Protect your community.\033[0m\n"); 
             
-        System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Here you can update the infected details. Please mention the caseId of the case. And proceed to update. Enter \"NULL\" wherever you don't want to modify:\n\n");
+        System.out.println("Hello Admin! Welcome to home screen of Outbreak Observer.\n Here you can update the infected details. Please mention the caseId of the case. And proceed to update. Enter \"null\" wherever you don't want to modify:\n\n");
         System.out.println("caseId: ");
+        list.add( sc.nextLine() );
+        System.out.println("qroomNO: ");
         list.add( sc.nextLine() );
         System.out.println("startDate: ");
         list.add( sc.nextLine() );

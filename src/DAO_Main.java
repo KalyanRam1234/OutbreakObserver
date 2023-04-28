@@ -268,7 +268,7 @@ public class DAO_Main {
                         {
                             case 1:{
                                 ArrayList<String> list = UI.displayUpdateInfected_Prompt2();
-                                sdao.updateInfectedDetails(list.get(0), list.get(1), list.get(2), list.get(3));
+                                sdao.updateInfectedDetails(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4));
                                 
                                 break;
                             }
@@ -279,6 +279,7 @@ public class DAO_Main {
                                 break;
                             }
                         }
+                        daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
                         break;
                     }
 

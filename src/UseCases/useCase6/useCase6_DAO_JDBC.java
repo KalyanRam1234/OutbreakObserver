@@ -4,6 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class useCase6_DAO_JDBC implements useCase6_DAO{
+
+    class DS{
+        int i;
+        String s;
+
+        public DS(int i, String s) { this.i=i; this.s=s;}
+        public int getInt() {return this.i;}
+        public String getString() {return this.s;}
+    }
+
     Connection dbConnection;
 
     public useCase6_DAO_JDBC(Connection dbconn){
@@ -88,31 +98,82 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
     // }
 
     @Override
-    public void updateInfectedDetails(String caseid, String sdate, String edate, String healthStatus) {
+    public void updateInfectedDetails(String caseid, String qroomNo, String sdate, String edate, String healthStatus) {
                 PreparedStatement preparedStatement = null;																																																																																																																																													
                 String sql;
-                sql = "UPDATE quarantine SET caseId=?, startDate=?, endDate=?, healthStatus=? WHERE caseId=?";
+                
+                if(!qroomNo.equals("null"))
+                {
+                    sql = "UPDATE posCase qroomNo=? WHERE caseId=?";
         
-                try {
-                    preparedStatement = dbConnection.prepareStatement(sql);
+                    try {
+                        preparedStatement = dbConnection.prepareStatement(sql);
                     
-                    preparedStatement.setString(1,caseid);
-                    preparedStatement.setString(2, sdate);
-                    preparedStatement.setString(3, edate);
-                    preparedStatement.setString(4, healthStatus);
-                    // execute update SQL stetement
-                    preparedStatement.executeUpdate();
-                } catch (SQLException e) {
-                     System.out.println(e.getMessage());
-                 }
-        
-                try{
-                    if (preparedStatement != null) {
-                        preparedStatement.close();
+                        preparedStatement.setString(1, qroomNo);
+                        preparedStatement.setString(2,caseid);
+                        // execute update SQL stetement
+                        preparedStatement.executeUpdate();
+                    } catch (SQLException e) {
+                         System.out.println(e.getMessage());
                     }
-                } catch (SQLException e) {
-                     System.out.println(e.getMessage());
-                 }
+        
+                    try{
+                         if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                    } catch (SQLException e) {
+                         System.out.println(e.getMessage());
+                    }
+                }
+                
+                if(!sdate.equals("null") || !edate.equals("null") || !healthStatus.equals("null"))
+                {
+                    ArrayList<DS> l = new ArrayList<DS>();
+
+                    sql = "UPDATE quarantine SET caseId=?"; l.add(new DS(1,caseid));
+                    int i=2;
+                    if(!sdate.equals("null"))
+                        {
+                            sql += ",startDate=? "; l.add(new DS(i,sdate)); i++;
+                        }
+                    if(!edate.equals("null"))
+                        {
+                            sql += ",endDate=? "; l.add(new DS(i,edate)); i++;
+                        }
+                    if(!healthStatus.equals("null"))
+                        {
+                            sql += ",healthStatus=? "; l.add(new DS(i,healthStatus)); i++;
+                        }
+                    sql += "WHERE caseId=?";
+                    l.add(new DS(i,caseid));
+                    //sql = "UPDATE quarantine SET caseId=?, startDate=?, endDate=?, healthStatus=? WHERE caseId=?";
+
+                    try {
+                        preparedStatement = dbConnection.prepareStatement(sql);
+
+                        for(int j=0; j<l.size(); j++)
+                        {
+                            preparedStatement.setString(l.get(j).getInt(),l.get(j).getString());
+                        }
+                        //preparedStatement.setString(1,caseid);
+                        //preparedStatement.setString(2, sdate);
+                        //preparedStatement.setString(3, edate);
+                        //preparedStatement.setString(4, healthStatus);
+                        //preparedStatement.setString(5, caseid);
+                        // execute update SQL stetement
+                        preparedStatement.executeUpdate();
+                    } catch (SQLException e) {
+                         System.out.println(e.getMessage());
+                     }
+                 
+                    try{
+                        if (preparedStatement != null) {
+                            preparedStatement.close();
+                        }
+                    } catch (SQLException e) {
+                      System.out.println(e.getMessage());
+                  }
+                }
     }
 
     @Override
