@@ -188,15 +188,12 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
     {
         PreparedStatement preparedStatement = null;													
         Statement stmt = null;																		
-		String sql,retrieve, insert;
-        ArrayList<RTPCR> x=getRTPCRByStudentId(test.getstudentId());
-        if(x.size()==0) {
-            System.out.println("This studentid doesn't exist.");
-            return 1;
-        }
+		String sql,retrieve, insert, check, delete;
 		sql = "insert into rtpcr(testId, studentId, testDate, test_result, certif) values (?,?,?,?,?)";
 
         retrieve="select count(*) as count from rtpcr";
+
+        check="select studentId from posCase where studentId='"+ test.getstudentId() +"'";
 
         insert="insert into posCase(caseId,studentId,qroomNo,testId,diagnosisDate) values(?,?,?,?,?)";
 		try {
@@ -205,6 +202,16 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
             rs.next();
             int count=rs.getInt("count")+1;
             String testid="RT"+count;
+            rs=stmt.executeQuery(check);
+            rs.last();
+            int val=rs.getRow();
+
+            rs=stmt.executeQuery("select studentId from student where studentId='"+test.getstudentId()+"'");
+            rs.last();
+            if(rs.getRow()==0){
+                System.out.println("Invalid student ID");
+                return 0;
+            }
 			preparedStatement = dbConnection.prepareStatement(sql);
  
 			preparedStatement.setString(1, testid);
@@ -220,6 +227,12 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
             if(test.gettest_Result().equals("Positive")){
                 int caseid=dao.getTotalCases()+1;
                 String id="case"+caseid;
+
+                if(val==1){
+                    delete="delete from posCase where studentId='"+test.getstudentId()+"'";
+                    preparedStatement=dbConnection.prepareStatement(delete);
+                    preparedStatement.executeUpdate();
+                }
 
                 preparedStatement = dbConnection.prepareStatement(insert);
                 preparedStatement.setString(1, id);

@@ -113,8 +113,8 @@ public class DAO_Main {
                         RTPCR list = UI.displayRTPCRPrompt1();
                         RTPCRDAO sdao = daoFactory.getRTPCRDAO();
 
-                        int x=sdao.enterRTPCR(list);
-                        if(x==0) daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
+                        sdao.enterRTPCR(list);
+                        daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
 
                         break;
                     }
@@ -269,7 +269,6 @@ public class DAO_Main {
                         System.out.print("\033[H\033[2J");  
                         System.out.flush();
 
-                        System.out.println("sdj111111");
                         useCase6_DAO sdao = daoFactory.getuseCase6DAO();
                         
                         int i5 = UI.displayInfectedPrompt6();
@@ -378,7 +377,7 @@ public class DAO_Main {
             }
             }
 
-            else{
+            else if(user.equals("")==false){
                 while(true){
                     daoFactory.activateConnection();  
                     System.out.print("\033[H\033[2J");  

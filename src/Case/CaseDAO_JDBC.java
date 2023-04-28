@@ -40,13 +40,14 @@ public class CaseDAO_JDBC implements CaseDAO{
 	@Override
 	public int getTotalCases(){
 		Statement stmt = null;
-		String sql="select count(*) as count from posCase";
+		String sql="select max(caseId) as max from posCase";
 		try{
 			stmt=dbConnection.createStatement();
 			ResultSet rs= stmt.executeQuery(sql);
             rs.next();
-            int count=rs.getInt("count");
-			return count;
+            String count=rs.getString("max");
+			String num=count.substring(4);
+			return Integer.parseInt(num);
 		}
 		catch ( SQLException ex){
             System.out.println("SQLException: " + ex.getMessage());
