@@ -184,12 +184,16 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
     }
 
     @Override
-    public void enterRTPCR(RTPCR test)
+    public int enterRTPCR(RTPCR test)
     {
         PreparedStatement preparedStatement = null;													
         Statement stmt = null;																		
 		String sql,retrieve, insert;
-
+        ArrayList<RTPCR> x=getRTPCRByStudentId(test.getstudentId());
+        if(x.size()==0) {
+            System.out.println("This studentid doesn't exist.");
+            return 1;
+        }
 		sql = "insert into rtpcr(testId, studentId, testDate, test_result, certif) values (?,?,?,?,?)";
 
         retrieve="select count(*) as count from rtpcr";
@@ -227,6 +231,7 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
                 preparedStatement.executeUpdate();
             }
             System.out.println("Data was entered successfully.\n");
+            return 0;
 
 		} catch (SQLException e) {
  			System.out.println(e.getMessage());
@@ -239,6 +244,7 @@ public class RTPCRDAO_JDBC implements RTPCRDAO{
 		} catch (SQLException e) {
  			System.out.println(e.getMessage());
  		}
+        return 1;
     }
 
     @Override

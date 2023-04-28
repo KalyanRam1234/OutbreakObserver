@@ -19,6 +19,7 @@ import UIUX.AdminUI;
 import UIUX.ClientUI;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import HostelRoom.HostelDAO;
@@ -112,9 +113,8 @@ public class DAO_Main {
                         RTPCR list = UI.displayRTPCRPrompt1();
                         RTPCRDAO sdao = daoFactory.getRTPCRDAO();
 
-                        sdao.enterRTPCR(list);
-
-                        daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
+                        int x=sdao.enterRTPCR(list);
+                        if(x==0) daoFactory.deactivateConnection(DAO_Factory.TXN_STATUS.COMMIT);
 
                         break;
                     }
@@ -164,8 +164,18 @@ public class DAO_Main {
                         System.out.print("\033[H\033[2J");  
                         System.out.flush();
                         useCase3_DAO sdao = daoFactory.getuseCase3DAO();
+                        StudentDAO dao=daoFactory.getStudentDAO();
                         String id = UI.displayVaccinationPrompt3a();
+                        // Student s=dao.getStudentByKey(id);
+                        // if(s.equals(null) || s.equals("null")){
+                        //     System.out.println("Studentid doesn't exist");
+                        //     break;
+                        // }
                         int i3 = sdao.getCurrentDoseNo(id);
+                        if(i3==-1){
+                            System.out.println("Student doesn't exist");
+                            break;
+                        } 
                         ArrayList<String> list = UI.displayVaccinationPrompt3b(i3);
                         
                         useCase3 uc3 = new useCase3(id, i3, list.get(0), list.get(1), list.get(2));
@@ -197,6 +207,10 @@ public class DAO_Main {
                                 
                                 String s1a = UI.displayVaccinationPrompt4a();
                                 ArrayList<useCase4> list = sdao.getStudentDoses(s1a);
+                                if(list.size()==0){
+                                    System.out.println("Student doesn't exist");
+                                    break;
+                                }
                                 UI.displayVaccinationDetailsOfStudent(list);
                                 break;
                             }
@@ -319,7 +333,12 @@ public class DAO_Main {
                                 String roomNo=UI.display8a();
                                 useCase8 hr=sdao.getRoomDetails(roomNo);
                                 hostel.add(hr);
-                                UI.Printrooms(hostel, hrr.getHostelCapacity("Hostel"), hrr.getHostelVacancy("Hostel"));
+                                if(Objects.isNull(hr)){
+                                    System.out.println("Invalid roomNo");
+                                }
+                                else{
+                                    UI.Printrooms(hostel, hrr.getHostelCapacity("Hostel"), hrr.getHostelVacancy("Hostel"));
+                                } 
                                 break;
                             }
 
