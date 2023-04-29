@@ -166,11 +166,6 @@ public class DAO_Main {
                         useCase3_DAO sdao = daoFactory.getuseCase3DAO();
                         StudentDAO dao=daoFactory.getStudentDAO();
                         String id = UI.displayVaccinationPrompt3a();
-                        // Student s=dao.getStudentByKey(id);
-                        // if(s.equals(null) || s.equals("null")){
-                        //     System.out.println("Studentid doesn't exist");
-                        //     break;
-                        // }
                         int i3 = sdao.getCurrentDoseNo(id);
                         if(i3==-1){
                             System.out.println("Student doesn't exist");
@@ -273,7 +268,6 @@ public class DAO_Main {
                         
                         int i5 = UI.displayInfectedPrompt6();
                        
-                        System.out.println("sdjhfjah");
                         System.out.print("\033[H\033[2J");  
                         System.out.flush();
                         

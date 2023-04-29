@@ -104,7 +104,7 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
                 
                 if(!qroomNo.equals("null"))
                 {
-                    sql = "UPDATE posCase qroomNo=? WHERE caseId=?";
+                    sql = "UPDATE posCase qroomNo=? WHERE caseId=? ";
         
                     try {
                         preparedStatement = dbConnection.prepareStatement(sql);
@@ -130,19 +130,20 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
                 {
                     ArrayList<DS> l = new ArrayList<DS>();
 
-                    sql = "UPDATE quarantine SET caseId=?"; l.add(new DS(1,caseid));
+                    sql = "UPDATE quarantine SET caseId=? "; 
+                    l.add(new DS(1,caseid));
                     int i=2;
                     if(!sdate.equals("null"))
                         {
-                            sql += ",startDate=? "; l.add(new DS(i,sdate)); i++;
+                            sql += " ,startDate=? "; l.add(new DS(i,sdate)); i++;
                         }
                     if(!edate.equals("null"))
                         {
-                            sql += ",endDate=? "; l.add(new DS(i,edate)); i++;
+                            sql += " ,endDate=? "; l.add(new DS(i,edate)); i++;
                         }
                     if(!healthStatus.equals("null"))
                         {
-                            sql += ",healthStatus=? "; l.add(new DS(i,healthStatus)); i++;
+                            sql += " ,healthStatus=? "; l.add(new DS(i,healthStatus)); i++;
                         }
                     sql += "WHERE caseId=?";
                     l.add(new DS(i,caseid));
