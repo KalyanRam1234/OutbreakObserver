@@ -104,12 +104,12 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
                 
                 if(!qroomNo.equals("null"))
                 {
-                    sql = "UPDATE posCase qroomNo=? WHERE caseId=? ";
+                    sql = "UPDATE posCase SET qroomNo=? WHERE caseId=?";
         
                     try {
                         preparedStatement = dbConnection.prepareStatement(sql);
                     
-                        preparedStatement.setString(1, qroomNo);
+                        preparedStatement.setString(1,qroomNo);
                         preparedStatement.setString(2,caseid);
                         // execute update SQL stetement
                         preparedStatement.executeUpdate();
