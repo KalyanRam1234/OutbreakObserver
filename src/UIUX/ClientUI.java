@@ -19,8 +19,8 @@ public class ClientUI {
         System.out.println("******************************************** OUTBREAK OBSERVER ********************************************************");
         System.out.println("                         \033[3m Track the spread, Fight covid-19, Protect your community.\033[0m\n"); 
         System.out.println("Hello " + username+"! Welcome to home screen of Outbreak Observer.\n What action would you like to take:\n");
-        System.out.println("\t 1) Get Vaccination Details.");
-        System.out.println("\t 2) Get RTPCR details.");
+        System.out.println("\t 1) Get RTPCR details.");
+        System.out.println("\t 2) Get Vaccination details.");
         System.out.println("\t 3) Quit");
         int i;
         while(true)
