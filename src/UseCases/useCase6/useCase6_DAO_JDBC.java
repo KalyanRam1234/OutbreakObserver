@@ -119,11 +119,25 @@ public class useCase6_DAO_JDBC implements useCase6_DAO{
         
                     try{
                          if (preparedStatement != null) {
+                            sql = "UPDATE hostelRoom SET vacancy=0 WHERE roomNo=? and roomType='Quarantine'";
+        
+                            try {
+                                preparedStatement = dbConnection.prepareStatement(sql);
+                            
+                                preparedStatement.setString(1,qroomNo);
+                                // execute update SQL stetement
+                                preparedStatement.executeUpdate();
+                            } catch (SQLException e) {
+                                System.out.println(e.getMessage());
+                            }
+
                             preparedStatement.close();
                         }
                     } catch (SQLException e) {
                          System.out.println(e.getMessage());
                     }
+        
+    
                 }
                 
                 if(!sdate.equals("null") || !edate.equals("null") || !healthStatus.equals("null"))
