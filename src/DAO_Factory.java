@@ -27,7 +27,7 @@ public class DAO_Factory{
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/outbreakObserverDB?characterEncoding=latin1&useConfigs=maxPerformance";
 	static final String USER = "root";
-	static final String PASS = "Kalyan#1234";
+	static final String PASS = "password";
 	Connection dbconnection = null;
 
 	// You can add additional DAOs here as needed
